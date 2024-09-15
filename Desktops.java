@@ -1,14 +1,20 @@
-public class Desktops extends Equipo{
-    private int RAM; //Memoria RAM
-    private String Grafica;
-    private float sizeCase; //Tamaño de la torre
+//subclase Desktop
+class Desktop extends Equipo {
+    private String memoria;
+    private String tarjetaGrafica;
+    private String tamanoTorre;
 
-    public Desktops(String fabricante, String modelo, String Procesador, String hardisk, float pantalla, int ram, String grafica, float sizecase) {
+    public Desktop(String fabricante, String modelo, String Procesador, String hardisk, float pantalla,
+                   String memoria, String tarjetaGrafica, String tamanoTorre) {
         super(fabricante, modelo, Procesador, hardisk, pantalla);
-        this.RAM = RAM;
-        this.Grafica = grafica;
-        this.sizeCase = sizecase;
+        this.memoria = memoria;
+        this.tarjetaGrafica = tarjetaGrafica;
+        this.tamanoTorre = tamanoTorre;
     }
-    //Subclase
 
+    @Override
+    public String getDetalles() {
+        return super.getDetalles() + "\nMemoria: " + memoria +
+               "\nTarjeta Gráfica: " + tarjetaGrafica + "\nTamaño de Torre: " + tamanoTorre;
+    }
 }

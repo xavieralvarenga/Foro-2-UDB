@@ -1,8 +1,10 @@
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 public class Main {
     public static void main(String[] args) {
-        // En este método se instanciará los objetos
+        // Lista para almacenar los equipos
+        ArrayList<Equipo> listaEquipos = new ArrayList<>();
 
         String nombreUsuario = JOptionPane.showInputDialog("Por favor, ingresa tu nombre");
         Object[] equipos = {"Desktops", "Laptops", "Tablets"};
@@ -13,7 +15,7 @@ public class Main {
         int seleccion;
 
         do {
-            Object[] opciones = {"Registrar equipo.", "Ver equipos", "Salir"};
+            Object[] opciones = {"Registrar equipo", "Ver equipos", "Salir"};
             seleccion = JOptionPane.showOptionDialog(null,
                     "¿Qué deseas realizar?",
                     "Menú Principal",
@@ -24,7 +26,7 @@ public class Main {
                     opciones[0]);
 
             switch (seleccion) {
-                case 0:
+                case 0: // Registrar equipo
                     seleccionEquipos = JOptionPane.showInputDialog(
                             null,
                             "Selecciona el equipo a registrar: ",
@@ -33,9 +35,11 @@ public class Main {
                             null,
                             equipos,
                             equipos[0]);
-                    // Aquí agregar el código para registrar el equipo seleccionado
+                    if (seleccionEquipos != null) {
+                        registrarEquipo((String) seleccionEquipos, listaEquipos);
+                    }
                     break;
-                case 1:
+                case 1: // Ver equipos
                     seleccionEquipos = JOptionPane.showInputDialog(
                             null,
                             "Selecciona los equipos que quieres visualizar: ",
@@ -44,9 +48,11 @@ public class Main {
                             null,
                             equipos,
                             equipos[0]);
-                    // Aquí agregar el código para visualizar los equipos seleccionados
+                    if (seleccionEquipos != null) {
+                        verEquipos((String) seleccionEquipos, listaEquipos);
+                    }
                     break;
-                case 2:
+                case 2: // Salir
                     int confirmacion = JOptionPane.showConfirmDialog(null,
                             "¿Estás seguro de que deseas salir?",
                             "Confirmar salida",
@@ -56,11 +62,45 @@ public class Main {
                     }
                     break;
                 default:
-                    // Si el usuario cierra el diálogo o presiona cancelar
                     salir = true;
                     break;
             }
         } while (!salir);
     }
-}
 
+    private static void registrarEquipo(String tipoEquipo, ArrayList<Equipo> listaEquipos) {
+        String fabricante = JOptionPane.showInputDialog("Fabricante:");
+        String modelo = JOptionPane.showInputDialog("Modelo:");
+        String procesador = JOptionPane.showInputDialog("Procesador:");
+        String hardisk = JOptionPane.showInputDialog("Disco Duro:");
+        float pantalla = Float.parseFloat(JOptionPane.showInputDialog("Tamaño de Pantalla:"));
+
+        switch (tipoEquipo) {
+            case "Desktops":
+                String memoriaD = JOptionPane.showInputDialog("Memoria:");
+                String tarjetaGrafica = JOptionPane.showInputDialog("Tarjeta gráfica:");
+                String tamanoTorre = JOptionPane.showInputDialog("Tamaño de torre:");
+
+                listaEquipos.add(new Desktop(fabricante, modelo, procesador, hardisk, pantalla, memoriaD, tarjetaGrafica, tamanoTorre));
+                break;
+            case "Laptops":
+                String memoriaL = JOptionPane.showInputDialog("Memoria:");
+
+                listaEquipos.add(new Laptop(fabricante, modelo, procesador, hardisk, pantalla, memoriaL));
+                break;
+            case "Tablets":
+                String tipoPantalla = JOptionPane.showInputDialog("Tipo de Pantalla (Capacitiva/Resistiva):");
+                String sistemaOperativo = JOptionPane.showInputDialog("Sistema Operativo:");
+
+                listaEquipos.add(new Tablet(fabricante, modelo, procesador, hardisk, pantalla, tipoPantalla, sistemaOperativo));
+                break;
+            default:
+                JOptionPane.showMessageDialog(null, "Tipo de equipo no reconocido.");
+                return;
+        }
+
+        // Mostrar mensaje de éxito
+        JOptionPane.showMessageDialog(null, "El equipo ha sido registrado exitosamente.", "Registro Exitoso", JOptionPane.INFORMATION_MESSAGE);
+    }
+
+}
