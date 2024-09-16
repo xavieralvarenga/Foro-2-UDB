@@ -13,8 +13,12 @@ class Desktop extends Equipo {
     }
 
     @Override
-    public String getDetalles() {
-        return super.getDetalles() + "\nMemoria: " + memoria +
-               "\nTarjeta Gráfica: " + tarjetaGrafica + "\nTamaño de Torre: " + tamanoTorre;
+    public String getTipo(){
+        return "Desktops";
+    }
+
+    @Override
+    public String toString() {
+        return super.toString() + ", Memoria: " + memoria + ", Tarjeta Gráfica: " + tarjetaGrafica + ", Tamaño Torre: " + tamanoTorre;
     }
 }

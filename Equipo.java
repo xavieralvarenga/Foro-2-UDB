@@ -1,22 +1,23 @@
-public class Equipo {
+public abstract class Equipo {
     // Clase base para aplicar Herencia
-    protected String Fabricante;
-    protected String Modelo;
-    protected String Procesador;
-    protected String Hardisk;
-    protected float Pantalla; // Indica el tamaño de la pantalla
+    protected String fabricante;
+    protected String modelo;
+    protected String procesador;
+    protected String hardisk;
+    protected float pantalla; // Indica el tamaño de la pantalla
 
     public Equipo(String fabricante, String modelo, String Procesador, String hardisk, float pantalla) {
-        this.Fabricante = fabricante;
-        this.Modelo = modelo;
-        this.Procesador = Procesador;
-        this.Hardisk = hardisk;
-        this.Pantalla = pantalla;
+        this.fabricante = fabricante;
+        this.modelo = modelo;
+        this.procesador = Procesador;
+        this.hardisk = hardisk;
+        this.pantalla = pantalla;
     }
 
-    public String getDetalles() {
-        return "Fabricante: " + Fabricante + "\nModelo: " + Modelo +
-               "\nProcesador: " + Procesador + "\nDisco Duro: " + Hardisk +
-               "\nPantalla: " + Pantalla + "\"";
+    public abstract String getTipo();
+
+    @Override
+    public String toString() {
+        return "Fabricante: " + fabricante + ", Modelo: " + modelo + ", Procesador: " + procesador + ", Disco Duro: " + hardisk + ", Pantalla: " + pantalla;
     }
 }

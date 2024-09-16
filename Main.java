@@ -102,5 +102,21 @@ public class Main {
         // Mostrar mensaje de éxito
         JOptionPane.showMessageDialog(null, "El equipo ha sido registrado exitosamente.", "Registro Exitoso", JOptionPane.INFORMATION_MESSAGE);
     }
+    private static void verEquipos(String tipoEquipo, ArrayList<Equipo> listaEquipos) {
+        StringBuilder equiposInfo = new StringBuilder();
+    
+        for (Equipo equipo : listaEquipos) {
+            if (equipo.getTipo().equalsIgnoreCase(tipoEquipo)) {
+                equiposInfo.append(equipo.toString()).append("\n");
+            }
+        }
+    
+        if (equiposInfo.length() > 0) {
+            JOptionPane.showMessageDialog(null, equiposInfo.toString(), "Lista de " + tipoEquipo, JOptionPane.INFORMATION_MESSAGE);
+        } else {
+            JOptionPane.showMessageDialog(null, "No hay equipos de tipo " + tipoEquipo + " registrados.", "Información", JOptionPane.INFORMATION_MESSAGE);
+        }
+    }
+    
 
 }

@@ -9,7 +9,13 @@ class Laptop extends Equipo {
     }
 
     @Override
-    public String getDetalles() {
-        return super.getDetalles() + "\nMemoria: " + memoria;
+    public String getTipo(){
+        return "Laptops";
+    }
+
+
+    @Override
+    public String toString() {
+        return super.toString() + ", Memoria: " + memoria;
     }
 }
