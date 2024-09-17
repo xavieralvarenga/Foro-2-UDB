@@ -19,6 +19,8 @@ class Desktop extends Equipo {
 
     @Override
     public String toString() {
-        return super.toString() + ", Memoria: " + memoria + ", Tarjeta Gráfica: " + tarjetaGrafica + ", Tamaño Torre: " + tamanoTorre;
+        return super.toString() + "Memoria: " + memoria + "\n" +
+                "Tarjeta Gráfica: " + tarjetaGrafica + "\n" +
+                "Tamaño Torre: " + tamanoTorre + "\n";
     }
 }

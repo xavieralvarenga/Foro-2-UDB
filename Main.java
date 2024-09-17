@@ -107,7 +107,8 @@ public class Main {
     
         for (Equipo equipo : listaEquipos) {
             if (equipo.getTipo().equalsIgnoreCase(tipoEquipo)) {
-                equiposInfo.append(equipo.toString()).append("\n");
+                equiposInfo.append(equipo.toString())
+                           .append("\n---------------------------------\n");
             }
         }
     

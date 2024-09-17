@@ -18,6 +18,7 @@ class Tablet extends Equipo {
 
     @Override
     public String toString() {
-        return super.toString() + ", Tipo Pantalla: " + tipoPantalla + ", Sistema Operativo: " + sistemaOperativo;
+        return super.toString() + "Tipo Pantalla: " + tipoPantalla + "\n" +
+                "Sistema Operativo: " + sistemaOperativo + "\n";
     }
 }

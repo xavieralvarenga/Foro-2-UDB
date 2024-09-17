@@ -18,6 +18,10 @@ public abstract class Equipo {
 
     @Override
     public String toString() {
-        return "Fabricante: " + fabricante + ", Modelo: " + modelo + ", Procesador: " + procesador + ", Disco Duro: " + hardisk + ", Pantalla: " + pantalla;
+        return "Fabricante: " + fabricante + "\n" +
+                "Modelo: " + modelo + "\n" +
+                "Procesador: " + procesador + "\n" +
+                "Disco Duro: " + hardisk + "\n" +
+                "Pantalla: " + pantalla;
     }
 }

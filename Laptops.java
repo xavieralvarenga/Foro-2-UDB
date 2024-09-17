@@ -16,6 +16,6 @@ class Laptop extends Equipo {
 
     @Override
     public String toString() {
-        return super.toString() + ", Memoria: " + memoria;
+        return super.toString() + "Memoria: " + memoria + "\n";
     }
 }
