@@ -69,39 +69,52 @@ public class Main {
     }
 
     private static void registrarEquipo(String tipoEquipo, ArrayList<Equipo> listaEquipos) {
-        String fabricante = JOptionPane.showInputDialog("Fabricante:");
-        String modelo = JOptionPane.showInputDialog("Modelo:");
-        String procesador = JOptionPane.showInputDialog("Procesador:");
-        String hardisk = JOptionPane.showInputDialog("Disco Duro:");
-        float pantalla = Float.parseFloat(JOptionPane.showInputDialog("Tamaño de Pantalla:"));
-
+        String fabricante = getInput("Fabricante:");
+        String modelo = getInput("Modelo:");
+        String procesador = getInput("Procesador:");
+        String hardisk = getInput("Disco Duro:");
+        float pantalla = Float.parseFloat(getInput("Tamaño de Pantalla:"));
+    
         switch (tipoEquipo) {
             case "Desktops":
-                String memoriaD = JOptionPane.showInputDialog("Memoria:");
-                String tarjetaGrafica = JOptionPane.showInputDialog("Tarjeta gráfica:");
-                String tamanoTorre = JOptionPane.showInputDialog("Tamaño de torre:");
-
+                String memoriaD = getInput("Memoria:");
+                String tarjetaGrafica = getInput("Tarjeta gráfica:");
+                String tamanoTorre = getInput("Tamaño de torre:");
+    
                 listaEquipos.add(new Desktop(fabricante, modelo, procesador, hardisk, pantalla, memoriaD, tarjetaGrafica, tamanoTorre));
                 break;
             case "Laptops":
-                String memoriaL = JOptionPane.showInputDialog("Memoria:");
-
+                String memoriaL = getInput("Memoria:");
+    
                 listaEquipos.add(new Laptop(fabricante, modelo, procesador, hardisk, pantalla, memoriaL));
                 break;
             case "Tablets":
-                String tipoPantalla = JOptionPane.showInputDialog("Tipo de Pantalla (Capacitiva/Resistiva):");
-                String sistemaOperativo = JOptionPane.showInputDialog("Sistema Operativo:");
-
+                String tipoPantalla = getInput("Tipo de Pantalla (Capacitiva/Resistiva):");
+                String sistemaOperativo = getInput("Sistema Operativo:");
+    
                 listaEquipos.add(new Tablet(fabricante, modelo, procesador, hardisk, pantalla, tipoPantalla, sistemaOperativo));
                 break;
             default:
                 JOptionPane.showMessageDialog(null, "Tipo de equipo no reconocido.");
                 return;
         }
-
+    
         // Mostrar mensaje de éxito
         JOptionPane.showMessageDialog(null, "El equipo ha sido registrado exitosamente.", "Registro Exitoso", JOptionPane.INFORMATION_MESSAGE);
     }
+    
+    // Method to validate input
+    private static String getInput(String message) {
+        String input;
+        do {
+            input = JOptionPane.showInputDialog(message);
+            if (input == null || input.trim().isEmpty()) {
+                JOptionPane.showMessageDialog(null, "El campo no puede estar vacío. Por favor, ingrese un valor válido.", "Entrada Inválida", JOptionPane.ERROR_MESSAGE);
+            }
+        } while (input == null || input.trim().isEmpty());
+        return input;
+    }
+    
     private static void verEquipos(String tipoEquipo, ArrayList<Equipo> listaEquipos) {
         StringBuilder equiposInfo = new StringBuilder();
     
